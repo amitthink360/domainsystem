@@ -41,7 +41,7 @@ $result_clist = $pdo->prepare($clist_sql);
 $result_clist->execute(array($domain));
 $list = $result_clist->fetch();
 
-if(isset($list)){
+if(isset($list['wildcard_url'])){
 	$queryString =  http_build_query($_GET);
 	if (strpos($list['wildcard_url'], '?') == false) {
 		$redirect_link = $list['wildcard_url']."?".$queryString;
