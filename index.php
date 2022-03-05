@@ -35,10 +35,21 @@ class Database
 $pdo = Database::connect();
 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-//$domain = $_SERVER[HTTP_HOST];
-$domain = "forgetfuls8legss.cc";
+$domain = $_SERVER[HTTP_HOST];
 $clist_sql = "SELECT wildcard_url FROM `domains_wildcard` WHERE `domain_name` = ?";
 $result_clist = $pdo->prepare($clist_sql);
 $result_clist->execute(array($domain));
-$lists = $result_clist->fetch();
-echo"<pre/>";print_r($lists);
+$list = $result_clist->fetch();
+
+if(isset($list)){
+	$queryString =  http_build_query($_GET);
+	if (strpos($list['wildcard_url'], '?') == false) {
+		$redirect_link = $list['wildcard_url']."?".$queryString;
+	}elseif (strpos($list['wildcard_url'], '&') !== false) {
+		$redirect_link = $list['wildcard_url']."&".$queryString;
+	}
+	
+	header("Location:".$redirect_link);
+}else{
+	echo "Link not found.";
+}
