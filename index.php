@@ -47,8 +47,7 @@ if(isset($list['wildcard_url'])){
 		$redirect_link = $list['wildcard_url']."?".$queryString;
 	}elseif (strpos($list['wildcard_url'], '&') !== false) {
 		$redirect_link = $list['wildcard_url']."&".$queryString;
-	}
-	
+	}	
 	header("Location:".$redirect_link);
 }else{
 	echo "Link not found.";
