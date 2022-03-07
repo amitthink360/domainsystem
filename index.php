@@ -52,3 +52,4 @@ if(isset($list['wildcard_url'])){
 }else{
 	echo "Link not found.";
 }
+?>
