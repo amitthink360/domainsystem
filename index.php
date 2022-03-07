@@ -36,7 +36,7 @@ $pdo = Database::connect();
 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 $domain = $_SERVER['HTTP_HOST'];
-$clist_sql = "SELECT wildcard_url FROM `domains_wildcard` WHERE `domain_name` = ?";
+$clist_sql = "SELECT wildcard_url FROM `domains_wildcard_ssl` WHERE `domain_name` = ?";
 $result_clist = $pdo->prepare($clist_sql);
 $result_clist->execute(array($domain));
 $list = $result_clist->fetch();
