@@ -9,4 +9,6 @@ RewriteRule ^ - [L]
 
 RewriteRule ^([^/]+)/([^/]+)/([^/]+)/?$ index.php?phone=$1&vrh=$2&cdv=$3 [L,QSA]
 
-RewriteRule ^([^/]+)/?$ index.php?phone=$1&vrh=$2&cdv=$3 [L,QSA]
+RewriteRule ^([^/]+)/([^/]+)/?$ index.php?phone=$1&vrh=$2 [L,QSA]
+
+RewriteRule ^([^/]+)/?$ index.php?phone=$1 [L,QSA]
