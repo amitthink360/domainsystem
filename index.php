@@ -1,4 +1,5 @@
 <?php
+echo"<pre/>";print_r($_GET);die;
 class Database
 {
     private static $dbName = 'domain_system';
