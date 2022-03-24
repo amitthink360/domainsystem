@@ -1,5 +1,10 @@
 <?php
-echo"<pre/>";print_r($_GET);die;
+echo"<pre/>";print_r($_GET);
+$queryString =  http_build_query($_GET);
+	
+echo $redirect_link = "google.com?".$queryString;
+
+die;
 class Database
 {
     private static $dbName = 'domain_system';
