@@ -1,10 +1,4 @@
 <?php
-echo"<pre/>";print_r($_GET);
-$queryString =  http_build_query($_GET);
-	
-echo $redirect_link = "google.com?".$queryString;
-
-die;
 class Database
 {
     private static $dbName = 'domain_system';
@@ -40,6 +34,14 @@ class Database
 
 $pdo = Database::connect();
 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+try {
+	$sql = "INSERT INTO clicker_phone (phone) values (?)";
+	$q = $pdo->prepare($sql);
+	$q->execute(array($_GET['phone']));
+}catch(Exception $e) {
+	//echo 'Message: ' .$e->getMessage();
+}
 
 $domain = $_SERVER['HTTP_HOST'];
 $clist_sql = "SELECT wildcard_url FROM `domains_wildcard_ssl` WHERE `domain_name` = ?";
