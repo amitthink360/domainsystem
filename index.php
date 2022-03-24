@@ -36,9 +36,9 @@ $pdo = Database::connect();
 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 try {
-	$sql = "INSERT INTO clicker_phone (phone) values (?)";
+	$sql = "INSERT INTO clicker_phone (phone,date_added) values (?,?)";
 	$q = $pdo->prepare($sql);
-	$q->execute(array($_GET['phone']));
+	$q->execute(array($_GET['phone'],date('Y-m-d H:i:s')));
 }catch(Exception $e) {
 	//echo 'Message: ' .$e->getMessage();
 }
